@@ -3,16 +3,17 @@
  */
 
 /**
- * Require Dependancies
+ * Require Dependencies
  */
-var webpage     = require("webpage"),
-    system      = require("system"),
-    interval    = 500, // 500ms
-    intervalId  = null,
-    page        = webpage.create();
+const webpage = require('webpage');
+const system = require('system');
+const interval = 500; // 500ms
+const page = webpage.create();
+
+let intervalId  = null;
 
 if(!system.env['URL']) {
-  console.error("system.env['URL'] required");
+  console.error(`system.env['URL'] required`);
   slimer.exit(1);
 }
 
@@ -64,44 +65,10 @@ function evaluate() {
     return;
   }
 
-  // sage guard, we will exist if there hasn't been console out put for 30s
+  // page guard, we will exist if there hasn't been console out put for 30s
   if ((new Date) - lastOutput > 30000) {
     slimer.exit(2);
   }
 }
 
 intervalId = setInterval(evaluate, interval);
-
-// var startTime;
-//
-// let complete;
-// let failures;
-// let lastOutput = new Date();
-//
-//
-// page.open("http://localhost:3300/")
-//
-// const testing = setInterval(function() {
-//
-//   complete = page.evaluate(function() {
-//     return window.__tests_complete__;
-//   });
-//
-//   if (complete) {
-//     // console.log('inside here');
-//     // console.log(complete);
-//     failures = page.evaluate(function() {
-//       return window.__tests_failures__;
-//     });
-//     page.close();
-//     // console.log(failures);
-//     // console.log('BEFORE EXIT');
-//     slimer.exit(failures);
-//     clearInterval(testing);
-//   }
-//
-//   // sage guard, we will exist if there hasn't been console out put for 30s
-//   if ((new Date) - lastOutput > 30000) {
-//     slimer.exit(2);
-//   }
-// }, 500);
