@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow-callback,prefer-template */
 Package.describe({
   name:          'tunguska:meteor-testing',
-  version:       '1.0.0',
+  version:       '1.0.1',
   summary:       'A test runner to enable easy testing with meteor',
   git:           'https://github.com/robfallows/tunguska-meteor-testing.git',
   documentation: 'README.md',
