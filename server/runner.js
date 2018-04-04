@@ -145,10 +145,10 @@ class TestManager {
     }
 
 		/**
-		 * Create teh zombie process
+		 * Create the zombie process
 		 * @type {[type]}
 		 */
-		this.slimer_proc = childProcess.execFile("xvfb-run", [this.slimer_bin, this.slimer_script].concat(process.env['SLIMERJS_ARGS'] || []), {
+		this.slimer_proc = childProcess.execFile(this.slimer_bin, ['--headless', this.slimer_script].concat(process.env['SLIMERJS_ARGS'] || []), {
 			env: Object.assign({
 				URL: Meteor.absoluteUrl()
 			}, process.env)
